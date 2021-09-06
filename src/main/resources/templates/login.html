@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+	<script type="text/javascript">
+		/*function fn(){
+			$.ajax({
+				url:'loginAjax',
+				type:'GET',
+				data:{name:$("#name").val()},
+				dataType:'json',
+				success:function(data){
+					if(data.flag==1){
+						$("#p").css("color","green").text("OK");
+					}else{
+						$("#p").css("color","red").text("该用户不存在");
+					}
+				},
+				error:function(error){
+					
+				}
+			})
+		}*/
+	</script>
+</head>
+
+<body>
+    <div class="login">
+        <h1><img src="images/gongfanglogo.png" alt="" width="80px"></h1>
+        <form th:action="@{/login }" method="post">
+            <input class="user" type="text" name="name" id="name" placeholder="用户名" required="required" />
+            <input class="pwd" type="password" name="password" placeholder="密码" required="required" />
+            <!--<span id="p"></span><br/>
+			<span th:text="${msg}" style="color:red;"></span><br/>-->
+            <p style="color:red;" th:if="${param.error}"
+               th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}">提示信息</p>
+            <div class="t-box dp-n">
+                <img src="images/error.png" alt="" class="t-img">
+                <p class="t-color"></p>
+            </div>
+			<button type="submit" class=" btn btn-primary btn-block btn-large">登录</button>
+        </form>
+    </div>
+    <!-- 引入公共js文件 -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+        /**
+         * 表单验证 
+         */
+        $(".btn").on("click", function() {
+            var user = $(".user").val();
+            if (user == "") {
+                $(".t-box").removeClass("dp-n");
+                $(".t-color").html("用户名不能为空！");
+                return;
+            };
+            var pwd = $(".pwd").val();
+            if (pwd == "") {
+                $(".t-box").removeClass("dp-n");
+                $(".t-color").html("密码不能为空！");
+                return;
+            };
+            /* if (user == "admin" && pwd == "123456") {
+                window.location.href = "index.html";
+            } else {
+                $(".t-box").removeClass("dp-n");
+                $(".t-color").html("用户名或密码错误！");
+
+            } */
+        });
+    </script>
+</body>
+
+</html>

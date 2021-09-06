@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse bdr-n z-ind" id="topBar">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">后台管理平台</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a th:text="${#authentication.name}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">设置</a></li>
+                            <li><a href="#">个人中心</a></li>
+                            <li><a th:href="@{/logout}">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="navleft leftnav-bgc" id="menuBar">
+            <dl class="list_dl">
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>基础菜单</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li">
+                            <a class="list_a" th:href="@{/list/1}">电影管理</a>
+                        </li>
+                        <li class="list_li">
+                            <a class="list_a" th:href="@{/cinemalist/1}">影院管理</a>
+                        </li>
+                        <li class="list_li">
+                            <a class="list_a" th:href="@{/halllist/1}">影厅管理</a>
+                        </li>
+                        <li class="list_li">
+                            <a class="list_a" th:href="@{/scheduleslist/1}">排片管理</a>
+                        </li>
+                    </ul>
+                </dd>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>用户管理</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li">
+                            <a class="list_a" th:href="@{/userlist/1}">用户管理</a>
+                         </li>
+                        <li class="list_li">
+                            <a class="list_a" th:href="@{/conmentslist/1}">评论管理</a>
+                        </li>
+                    </ul>
+                </dd>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>订单管理</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li">
+                            <a class="list_a" th:href="@{/orderinfolist/1}">订单</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+</body>
+</html>
